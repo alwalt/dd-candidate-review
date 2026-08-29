@@ -4,6 +4,10 @@ A local review workspace for the applications in `applications.csv`.
 
 > **Demo data notice:** All candidates, names, contact information, application responses, portfolios, and resumes included in the public demo dataset are synthetic. They do not represent real people or actual applications.
 
+## Preview
+
+![Candidate Review interface](assets/candidate-review.png)
+
 ## Run it
 
 From this folder:
