@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Candidate Review — Space Biology</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">D<span>²</span></div>
+      <div><strong>Candidate Review</strong><small>Data Discovery · Fall 2026</small></div>
+    </div>
+    <div class="header-actions">
+      <button class="btn ghost" id="importBtn">Import review</button>
+      <input id="importFile" type="file" accept=".csv,text/csv" hidden>
+      <button class="btn ghost" id="exportBtn">Export review</button>
+      <div class="reviewer"><span>WA</span><div><strong>Reviewer</strong><small>Reviewer</small></div></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">DATA DISCOVERY · FALL 2026</p>
+        <h1>Candidate Review</h1>
+        <p class="subtitle">Review candidates for the Fall 2026 Data Discovery program.</p>
+      </div>
+      <div class="progress-card">
+        <div class="progress-top"><span>Review progress</span><strong id="progressPct">0%</strong></div>
+        <div class="progress-track"><i id="progressBar"></i></div>
+        <div class="progress-meta"><span><b id="reviewedCount">0</b> reviewed</span><span><b id="remainingCount">0</b> remaining</span></div>
+      </div>
+    </section>
+
+    <section class="workspace">
+      <aside class="filters">
+        <div class="filter-heading"><h2>Filters</h2><button id="clearFilters">Clear all</button></div>
+        <label class="search"><span>⌕</span><input id="searchInput" placeholder="Search names, skills, courses…" /></label>
+
+        <div class="filter-group">
+          <h3>Review status</h3>
+          <label><input type="checkbox" name="status" value="unreviewed"> <span>Unreviewed</span><b id="unreviewedN">0</b></label>
+          <label><input type="checkbox" name="status" value="shortlisted"> <span>Shortlisted</span><b id="shortlistedN">0</b></label>
+          <label><input type="checkbox" name="status" value="reviewed"> <span>Reviewed</span><b id="reviewedN">0</b></label>
+        </div>
+
+        <div class="filter-group">
+          <h3>Python experience</h3>
+          <label><input type="checkbox" name="python" value="Advanced"> <span>Advanced</span></label>
+          <label><input type="checkbox" name="python" value="Intermediate"> <span>Intermediate</span></label>
+          <label><input type="checkbox" name="python" value="Beginner"> <span>Beginner</span></label>
+          <label><input type="checkbox" name="python" value="No-experience"> <span>No experience</span></label>
+        </div>
+
+        <div class="filter-group">
+          <h3>Minimum overall rating</h3>
+          <div class="rating-filter" id="ratingFilter" aria-label="Minimum rating">
+            <button data-value="1">★</button><button data-value="2">★</button><button data-value="3">★</button><button data-value="4">★</button><button data-value="5">★</button>
+          </div>
+          <small class="hint">Click again to reset</small>
+        </div>
+
+        <div class="filter-group">
+          <h3>Coursework</h3>
+          <label><input type="checkbox" name="course" value="Data 100"> <span>Data 100</span></label>
+          <label><input type="checkbox" name="course" value="Data 8"> <span>Data 8</span></label>
+          <label><input type="checkbox" name="course" value="CS 61A"> <span>CS 61A</span></label>
+          <label><input type="checkbox" name="course" value="CS 61B"> <span>CS 61B</span></label>
+        </div>
+      </aside>
+
+      <section class="candidate-panel">
+        <div class="list-toolbar">
+          <div><h2><span id="resultCount">0</span> candidates</h2><p>Showing candidates by relevant experience</p></div>
+          <select id="sortSelect" aria-label="Sort candidates">
+            <option value="fit">Relevant experience</option>
+            <option value="rating">Highest rated</option>
+            <option value="name">Name A–Z</option>
+            <option value="unreviewed">Unreviewed first</option>
+          </select>
+        </div>
+        <div class="candidate-list" id="candidateList"></div>
+        <div class="empty" id="emptyState" hidden><span>⌕</span><h3>No candidates found</h3><p>Try clearing a filter or using a broader search.</p></div>
+      </section>
+
+      <aside class="detail-panel" id="detailPanel">
+        <div class="detail-empty"><div>↖</div><h2>Select a candidate</h2><p>Select an application to view candidate information and resume.</p></div>
+      </aside>
+    </section>
+  </main>
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
